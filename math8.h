@@ -5,6 +5,12 @@
 
 typedef uint8_t fract8;
 typedef uint16_t fract16;
+typedef uint16_t  accum88;  ///< ANSI: unsigned short _Accum.  8 bits int, 8 bits fraction
+typedef int16_t   saccum78; ///< ANSI: signed   short _Accum.  7 bits int, 8 bits fraction
+typedef uint32_t  accum1616;///< ANSI: signed         _Accum. 16 bits int, 16 bits fraction
+typedef int32_t   saccum1516;///< ANSI: signed         _Accum. 15 bits int, 16 bits fraction
+typedef uint16_t  accum124; ///< no direct ANSI counterpart. 12 bits int, 4 bits fraction
+typedef int32_t   saccum114;///< no direct ANSI counterpart. 1 bit int, 14 bits fraction
 
 // math
 uint8_t  qadd8(uint8_t i, uint8_t j);
@@ -31,6 +37,9 @@ uint8_t  scale8(uint8_t i, fract8 scale);
 uint8_t  scale8_video(uint8_t i, fract8 scale);
 uint16_t scale16by8(uint16_t i, fract8 scale);
 uint16_t scale16(uint16_t i, fract16 scale);
+
+void nscale8x3( uint8_t& r, uint8_t& g, uint8_t& b, fract8 scale);
+void nscale8x3_video( uint8_t& r, uint8_t& g, uint8_t& b, fract8 scale);
 
 uint8_t  dim8_raw(uint8_t x);
 uint8_t  dim8_video(uint8_t x);

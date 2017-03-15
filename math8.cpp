@@ -144,6 +144,22 @@ uint8_t scale8_video(uint8_t i, fract8 scale) {
     return j;
 }
 
+void nscale8x3( uint8_t& r, uint8_t& g, uint8_t& b, fract8 scale)
+{
+    uint16_t scale_fixed = scale + 1;
+    r = (((uint16_t)r) * scale_fixed) >> 8;
+    g = (((uint16_t)g) * scale_fixed) >> 8;
+    b = (((uint16_t)b) * scale_fixed) >> 8;
+}
+
+void nscale8x3_video( uint8_t& r, uint8_t& g, uint8_t& b, fract8 scale)
+{
+    uint8_t nonzeroscale = (scale != 0) ? 1 : 0;
+    r = (r == 0) ? 0 : (((int)r * (int)(scale) ) >> 8) + nonzeroscale;
+    g = (g == 0) ? 0 : (((int)g * (int)(scale) ) >> 8) + nonzeroscale;
+    b = (b == 0) ? 0 : (((int)b * (int)(scale) ) >> 8) + nonzeroscale;
+}
+
 uint16_t scale16by8(uint16_t i, fract8 scale ) {
     uint16_t result;
     result = (i * (1+((uint16_t)scale))) >> 8;
