@@ -73,6 +73,10 @@ struct CRGB {
     {
     }
 
+    static CRGB fromColorCode(uint32_t colorcode) {
+    	return CRGB(colorcode);
+	}
+
     /// allow copy construction
 	inline CRGB(const CRGB& rhs) __attribute__((always_inline))
     {
@@ -86,6 +90,10 @@ struct CRGB {
     {
         hsv2rgb_rainbow( rhs, *this);
     }
+
+    static CRGB fromHSV(const CHSV &rhs) {
+    	return CRGB(rhs);
+	}
 
     /// allow assignment from one RGB struct to another
 	inline CRGB& operator= (const CRGB& rhs) __attribute__((always_inline))
