@@ -85,6 +85,10 @@ struct CRGB {
         b = rhs.b;
     }
 
+	static CRGB clone(const CRGB &rhs) {
+		return CRGB(rhs);
+	}
+
     /// allow construction from HSV color
 	inline CRGB(const CHSV& rhs) __attribute__((always_inline))
     {
