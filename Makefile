@@ -6,7 +6,10 @@
 
 all: fastled.js
 
-fastled.js: math8.cpp hsv2rgb.cpp colorutils.cpp color.cpp
+bindings.cpp: bindings.yaml
+	python gen_embind.py $^ $@
+
+fastled.js: bindings.cpp math8.cpp hsv2rgb.cpp colorutils.cpp
 	emcc -o $@ --bind $^
 
 clean:

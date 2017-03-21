@@ -1,3 +1,5 @@
 .*.swp
 a.out.js
 fastled.js
+bindings.cpp
+venv

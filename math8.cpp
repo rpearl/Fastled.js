@@ -1,7 +1,4 @@
 #include "math8.h"
-#include <emscripten/bind.h>
-
-using namespace emscripten;
 
 uint8_t qadd8(uint8_t i, uint8_t j) {
     unsigned int t = i + j;
@@ -373,57 +370,4 @@ uint8_t squarewave8(uint8_t in, uint8_t pulsewidth) {
     } else {
         return 0;
     }
-}
-
-EMSCRIPTEN_BINDINGS(math8) {
-	function("qadd8", &qadd8);
-	function("qadd7", &qadd7);
-	function("qsub8", &qsub8);
-
-	function("qmul8", &qmul8);
-
-	function("avg8", &avg8);
-	function("avg7", &avg7);
-	function("avg15", &avg15);
-	function("avg16", &avg16);
-	function("abs8", &abs8);
-
-	function("sqrt16", &sqrt16);
-	function("sin16", &sin16);
-	function("cos16", &cos16);
-	function("sin8", &sin8);
-	function("cos8", &cos8);
-
-	// scaling
-	function("scale8", &scale8);
-	function("scale8_video", &scale8_video);
-	function("scale16by8", &scale16by8);
-	function("scale16", &scale16);
-
-	function("dim8_raw", &dim8_raw);
-	function("dim8_video", &dim8_video);
-	function("dim8_lin", &dim8_lin);
-
-	function("brighten8_raw", &brighten8_raw);
-	function("brighten8_video", &brighten8_video);
-	function("brighten8_lin", &brighten8_lin);
-
-	// interpolation
-	function("lerp8by8", &lerp8by8);
-	function("lerp16by16", &lerp16by16);
-	function("lerp16by8", &lerp16by8);
-	function("lerp15by8", &lerp15by8);
-	function("lerp15by16", &lerp15by16);
-	function("map8", &map8);
-
-	// easing
-	function("ease8InOutQuad", &ease8InOutQuad);
-	function("ease8InOutCubic", &ease8InOutCubic);
-	function("ease8InOutApprox", &ease8InOutApprox);
-
-	// pulses
-	function("triwave8", &triwave8);
-	function("quadwave8", &quadwave8);
-	function("cubicwave8", &cubicwave8);
-	function("squarewave8", &squarewave8);
 }

@@ -1,0 +1,358 @@
+- name: math8
+  bindings:
+      - name: qadd8
+        type: function
+        inputs: 2
+      - name: qadd7
+        type: function
+        inputs: 2
+      - name: qsub8
+        type: function
+        inputs: 2
+      - name: qmul8
+        type: function
+        inputs: 2
+      - name: avg8
+        type: function
+        inputs: 2
+      - name: avg7
+        type: function
+        inputs: 2
+      - name: avg15
+        type: function
+        inputs: 2
+      - name: avg16
+        type: function
+        inputs: 2
+      - name: abs8
+        type: function
+        inputs: 2
+      - name: sqrt16
+        type: function
+        inputs: 1
+      - name: sin16
+        type: function
+        inputs: 1
+      - name: cos16
+        type: function
+        inputs: 1
+      - name: sin8
+        type: function
+        inputs: 1
+      - name: cos8
+        type: function
+        inputs: 1
+      - name: scale8
+        type: function
+        inputs: 2
+      - name: scale8_video
+        type: function
+        inputs: 2
+      - name: scale16by8
+        type: function
+        inputs: 2
+      - name: scale16
+        type: function
+        inputs: 2
+      - name: dim8_raw
+        type: function
+        inputs: 1
+      - name: dim8_video
+        type: function
+        inputs: 1
+      - name: dim8_lin
+        type: function
+        inputs: 1
+      - name: brighten8_raw
+        type: function
+        inputs: 1
+      - name: brighten8_video
+        type: function
+        inputs: 1
+      - name: brighten8_lin
+        type: function
+        inputs: 1
+      - name: lerp8by8
+        type: function
+        inputs: 3
+      - name: lerp16by16
+        type: function
+        inputs: 3
+      - name: lerp16by8
+        type: function
+        inputs: 3
+      - name: lerp15by8
+        type: function
+        inputs: 3
+      - name: lerp15by16
+        type: function
+        inputs: 3
+      - name: map8
+        type: function
+        inputs: 3
+      - name: ease8InOutQuad
+        type: function
+        inputs: 1
+      - name: ease8InOutCubic
+        type: function
+        inputs: 1
+      - name: ease8InOutApprox
+        type: function
+        inputs: 1
+      - name: triwave8
+        type: function
+        inputs: 1
+      - name: quadwave8
+        type: function
+        inputs: 1
+      - name: cubicwave8
+        type: function
+        inputs: 1
+      - name: squarewave8
+        type: function
+        inputs: 2
+- name: color
+  bindings:
+      - name: CHSV
+        type: class
+        constructor: [uint8_t, uint8_t, uint8_t]
+        fields:
+            - name: hue
+              type: property
+            - name: val
+              type: property
+            - name: sat
+              type: property
+      - name: CRGB
+        type: class
+        constructor: [uint8_t, uint8_t, uint8_t]
+        fields:
+            - name: fromColorCode
+              type: class_function
+            - name: clone
+              type: class_function
+            - name: fromHSV
+              type: class_function
+            - name: r
+              type: property
+            - name: g
+              type: property
+            - name: b
+              type: property
+            - name: setHSV
+              type: function
+            - name: setHue
+              type: function
+            - name: setColorCode
+              type: function
+            - name: add
+              type: function
+              ref: "&CRGB::operator+="
+            - name: addToRGB
+              type: function
+            - name: inc
+              type: function
+              ref: "select_overload<CRGB &()>(&CRGB::operator++)"
+            - name: subtract
+              type: function
+              ref: "&CRGB::operator-="
+            - name: subtractFromRGB
+              type: function
+            - name: dec
+              type: function
+              ref: "select_overload<CRGB &()>(&CRGB::operator--)"
+            - name: mul
+              type: function
+              ref: "&CRGB::operator*="
+            - name: div
+              type: function
+              ref: "&CRGB::operator/="
+            - name: rsh
+              type: function
+              ref: "&CRGB::operator>>="
+            - name: nscale8_video
+              type: function
+            - name: fadeLightBy
+              type: function
+            - name: nscale8
+              type: function
+              ref: "select_overload<CRGB&(uint8_t)>(&CRGB::nscale8)"
+            - name: nscale8_channels
+              type: function
+              ref: "select_overload<CRGB&(const CRGB&)>(&CRGB::nscale8)"
+            - name: fadeToBlackBy
+              type: function
+            - name: or
+              type: function
+              ref: "select_overload<CRGB&(uint8_t)>(&CRGB::operator |=)"
+            - name: or_channels
+              type: function
+              ref: "select_overload<CRGB&(const CRGB&)>(&CRGB::operator |=)"
+            - name: and
+              type: function
+              ref: "select_overload<CRGB&(uint8_t)>(&CRGB::operator &=)"
+            - name: and_channels
+              type: function
+              ref: "select_overload<CRGB&(const CRGB&)>(&CRGB::operator &=)"
+            - name: invert
+              type: function
+              ref: "&CRGB::operator-"
+            - name: lerp8
+              type: function
+            - name: lerp16
+              type: function
+      - name: HTMLColorCode
+        type: enum
+        prefix: CRGB
+        values:
+            - AliceBlue
+            - Amethyst
+            - AntiqueWhite
+            - Aqua
+            - Aquamarine
+            - Azure
+            - Beige
+            - Bisque
+            - Black
+            - BlanchedAlmond
+            - Blue
+            - BlueViolet
+            - Brown
+            - BurlyWood
+            - CadetBlue
+            - Chartreuse
+            - Chocolate
+            - Coral
+            - CornflowerBlue
+            - Cornsilk
+            - Crimson
+            - Cyan
+            - DarkBlue
+            - DarkCyan
+            - DarkGoldenrod
+            - DarkGray
+            - DarkGrey
+            - DarkGreen
+            - DarkKhaki
+            - DarkMagenta
+            - DarkOliveGreen
+            - DarkOrange
+            - DarkOrchid
+            - DarkRed
+            - DarkSalmon
+            - DarkSeaGreen
+            - DarkSlateBlue
+            - DarkSlateGray
+            - DarkSlateGrey
+            - DarkTurquoise
+            - DarkViolet
+            - DeepPink
+            - DeepSkyBlue
+            - DimGray
+            - DimGrey
+            - DodgerBlue
+            - FireBrick
+            - FloralWhite
+            - ForestGreen
+            - Fuchsia
+            - Gainsboro
+            - GhostWhite
+            - Gold
+            - Goldenrod
+            - Gray
+            - Grey
+            - Green
+            - GreenYellow
+            - Honeydew
+            - HotPink
+            - IndianRed
+            - Indigo
+            - Ivory
+            - Khaki
+            - Lavender
+            - LavenderBlush
+            - LawnGreen
+            - LemonChiffon
+            - LightBlue
+            - LightCoral
+            - LightCyan
+            - LightGoldenrodYellow
+            - LightGreen
+            - LightGrey
+            - LightPink
+            - LightSalmon
+            - LightSeaGreen
+            - LightSkyBlue
+            - LightSlateGray
+            - LightSlateGrey
+            - LightSteelBlue
+            - LightYellow
+            - Lime
+            - LimeGreen
+            - Linen
+            - Magenta
+            - Maroon
+            - MediumAquamarine
+            - MediumBlue
+            - MediumOrchid
+            - MediumPurple
+            - MediumSeaGreen
+            - MediumSlateBlue
+            - MediumSpringGreen
+            - MediumTurquoise
+            - MediumVioletRed
+            - MidnightBlue
+            - MintCream
+            - MistyRose
+            - Moccasin
+            - NavajoWhite
+            - Navy
+            - OldLace
+            - Olive
+            - OliveDrab
+            - Orange
+            - OrangeRed
+            - Orchid
+            - PaleGoldenrod
+            - PaleGreen
+            - PaleTurquoise
+            - PaleVioletRed
+            - PapayaWhip
+            - PeachPuff
+            - Peru
+            - Pink
+            - Plaid
+            - Plum
+            - PowderBlue
+            - Purple
+            - Red
+            - RosyBrown
+            - RoyalBlue
+            - SaddleBrown
+            - Salmon
+            - SandyBrown
+            - SeaGreen
+            - Seashell
+            - Sienna
+            - Silver
+            - SkyBlue
+            - SlateBlue
+            - SlateGray
+            - SlateGrey
+            - Snow
+            - SpringGreen
+            - SteelBlue
+            - Tan
+            - Teal
+            - Thistle
+            - Tomato
+            - Turquoise
+            - Violet
+            - Wheat
+            - White
+            - WhiteSmoke
+            - Yellow
+            - YellowGreen
+            - FairyLight
+            - FairyLightNCC
+            
