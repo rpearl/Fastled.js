@@ -2,120 +2,121 @@
   bindings:
       - name: qadd8
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: qadd7
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: qsub8
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: qmul8
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: avg8
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: avg7
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: avg15
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: avg16
         type: function
-        inputs: 2
+        inputs: [i,j]
       - name: abs8
         type: function
-        inputs: 2
+        inputs: [x]
       - name: sqrt16
         type: function
-        inputs: 1
+        inputs: [x]
       - name: sin16
         type: function
-        inputs: 1
+        inputs: [theta]
       - name: cos16
         type: function
-        inputs: 1
+        inputs: [theta]
       - name: sin8
         type: function
-        inputs: 1
+        inputs: [theta]
       - name: cos8
         type: function
-        inputs: 1
+        inputs: [theta]
       - name: scale8
         type: function
-        inputs: 2
+        inputs: [i, scale]
       - name: scale8_video
         type: function
-        inputs: 2
+        inputs: [i, scale]
       - name: scale16by8
         type: function
-        inputs: 2
+        inputs: [i, scale]
       - name: scale16
         type: function
-        inputs: 2
+        inputs: [i, scale]
       - name: dim8_raw
         type: function
-        inputs: 1
+        inputs: [x]
       - name: dim8_video
         type: function
-        inputs: 1
+        inputs: [x]
       - name: dim8_lin
         type: function
-        inputs: 1
+        inputs: [x]
       - name: brighten8_raw
         type: function
-        inputs: 1
+        inputs: [x]
       - name: brighten8_video
         type: function
-        inputs: 1
+        inputs: [x]
       - name: brighten8_lin
         type: function
-        inputs: 1
+        inputs: [x]
       - name: lerp8by8
         type: function
-        inputs: 3
+        inputs: [a,b,frac]
       - name: lerp16by16
         type: function
-        inputs: 3
+        inputs: [a,b,frac]
       - name: lerp16by8
         type: function
-        inputs: 3
+        inputs: [a,b,frac]
       - name: lerp15by8
         type: function
-        inputs: 3
+        inputs: [a,b,frac]
       - name: lerp15by16
         type: function
-        inputs: 3
+        inputs: [a,b,frac]
       - name: map8
         type: function
-        inputs: 3
+        inputs: [in, rangeStart, rangeEnd]
       - name: ease8InOutQuad
         type: function
-        inputs: 1
+        inputs: [i]
       - name: ease8InOutCubic
         type: function
-        inputs: 1
+        inputs: [i]
       - name: ease8InOutApprox
         type: function
-        inputs: 1
+        inputs: [i]
       - name: triwave8
         type: function
-        inputs: 1
+        inputs: [in]
       - name: quadwave8
         type: function
-        inputs: 1
+        inputs: [in]
       - name: cubicwave8
         type: function
-        inputs: 1
+        inputs: [in]
       - name: squarewave8
         type: function
-        inputs: 2
+        inputs: [in, pulsewidth]
 - name: color
   bindings:
       - name: CHSV
         type: class
         constructor: [uint8_t, uint8_t, uint8_t]
+        constructor_args: [hue, val, sat]
         fields:
             - name: hue
               type: property
@@ -126,13 +127,17 @@
       - name: CRGB
         type: class
         constructor: [uint8_t, uint8_t, uint8_t]
+        constructor_args: [r,g,b]
         fields:
             - name: fromColorCode
               type: class_function
+              inputs: [colorCode]
             - name: clone
               type: class_function
+              inputs: [colorCode]
             - name: fromHSV
               type: class_function
+              inputs: [CHSV]
             - name: r
               type: property
             - name: g
@@ -141,66 +146,87 @@
               type: property
             - name: setHSV
               type: function
+              inputs: [hue, sat, val]
             - name: setHue
               type: function
+              inputs: [hue]
             - name: setColorCode
               type: function
+              inputs: [colorCode]
             - name: add
               type: function
               ref: "&CRGB::operator+="
+              inputs: [CRGB]
             - name: addToRGB
               type: function
+              inputs: [val]
             - name: inc
               type: function
               ref: "select_overload<CRGB &()>(&CRGB::operator++)"
             - name: subtract
               type: function
               ref: "&CRGB::operator-="
+              inputs: [CRGB]
             - name: subtractFromRGB
               type: function
+              inputs: [val]
             - name: dec
               type: function
               ref: "select_overload<CRGB &()>(&CRGB::operator--)"
             - name: mul
               type: function
               ref: "&CRGB::operator*="
+              inputs: [val]
             - name: div
               type: function
               ref: "&CRGB::operator/="
+              inputs: [val]
             - name: rsh
               type: function
               ref: "&CRGB::operator>>="
+              inputs: [val]
             - name: nscale8_video
               type: function
+              inputs: [scale]
             - name: fadeLightBy
               type: function
+              inputs: [scale]
             - name: nscale8
               type: function
               ref: "select_overload<CRGB&(uint8_t)>(&CRGB::nscale8)"
+              inputs: [scale]
             - name: nscale8_channels
               type: function
               ref: "select_overload<CRGB&(const CRGB&)>(&CRGB::nscale8)"
+              inputs: [scaleRGB]
             - name: fadeToBlackBy
               type: function
+              inputs: [scale]
             - name: or
               type: function
               ref: "select_overload<CRGB&(uint8_t)>(&CRGB::operator |=)"
+              inputs: [val]
             - name: or_channels
               type: function
               ref: "select_overload<CRGB&(const CRGB&)>(&CRGB::operator |=)"
+              inputs: [CRGB]
             - name: and
               type: function
               ref: "select_overload<CRGB&(uint8_t)>(&CRGB::operator &=)"
+              inputs: [val]
             - name: and_channels
               type: function
               ref: "select_overload<CRGB&(const CRGB&)>(&CRGB::operator &=)"
+              inputs: [CRGB]
             - name: invert
               type: function
               ref: "&CRGB::operator-"
             - name: lerp8
               type: function
+              inputs: [target, frac]
             - name: lerp16
               type: function
+              inputs: [target, frac]
       - name: HTMLColorCode
         type: enum
         prefix: CRGB
